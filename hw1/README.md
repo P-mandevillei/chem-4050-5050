@@ -1,5 +1,6 @@
 # Homework 1
 ------------------------
+[Problem Statements](./homework_1_python.pdf)
 
 - [Problem 1](./homework-1-1.ipynb): Modeling and error analysis of volume-pressure relationship of a gas in a closed system
 
