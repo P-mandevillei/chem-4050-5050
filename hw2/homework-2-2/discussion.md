@@ -1,0 +1,13 @@
+
+# Comparing the behavior of $B_{2V}$ for different potentials
+Under all temperatures calculated, hard sphere potential results in a $B_{2V}$ of a constant $5 \times 10^{25} \AA/mol^3$. Square well and Lennard-Jones potentials both have results that appear to start from negative infinity and come closer to hard sphere potential's result as temperature increases, but Lennard-Jones appears to converge more slowly.
+
+## Hard Sphere Potential
+Hard sphere potential is either positive infinity or 0. When it's 0, the integrand turns 0 too. When it's positive infinity, the integrand approaches $(e^{-\infty}-1)r^2 = -r^2$ that is unrelated to $T$, which leads to the constant integration result at all temperatures. It is also the largest among the three, since it has no negative part.
+
+## Square Well Potential
+When $r<\sigma$, this gives the same temperature independence as hard sphere potential. However, temperature affects the integration result when $r$ is in the range $(\sigma, \lambda\sigma)$. Since this part is negative, $-u(r)/K_BT$ is positive and decreases as $T$ increases, which leads to a less postive integrand and, when multiplied by the negative factor $-2\pi$, gives a overall less negative result. Therefore it makes sense that the $B_{2V}$ curve is increasing throughout. When $T\rightarrow +\infty$, $-u(r)/K_BT\rightarrow0$, which cancels out the integrand and leads to converging result as the hard sphere potential.
+
+## Lennard-Jones Potential
+This model is a smoothed representation of the same trend represented by the square well potential model, so it makes sense that the integration results for the two follows closely. When $r<\sigma$, the potential approaches positive infinity, and it makes sense that integration across this region converges to some positive value **smaller than the limit set by the hard sphere potential**, since integration for a (appear-to-be-converging) potential curve should yield some smaller area than infinity. When $r>\sigma$, Lennard-Jones potential turns negative, and temperature would have the similar effect on the resulting $B_{2V}$ as that calculated using the square well potential. When T is small, the negative part of the potential dominates (as the exponent becomes a large positive number and exponentiation rises much more rapidly with positive exponents than it decays with negative exponents), and $B_{2V}$ approaches negative infinity. When T is large, the positive part of the potential dominates, and $B_{2V}$ approaches the limiting positive value.
+	
