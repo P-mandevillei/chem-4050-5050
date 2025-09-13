@@ -7,3 +7,6 @@
 - [Problem 2](./homework-1-2.ipynb): Bond length and bond angle auto-calculators
 
 - [Problem 3](./homework-1-grad.ipynb): Calculating and visualizing the wavefunction of a particle in a one-dimensional infinite potential well
+
+<br><br><br>
+[back](../README.md)
