@@ -6,7 +6,7 @@ from scipy.stats import t
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-df = pd.read_csv('trouton.csv')
+df = pd.read_csv('../trouton.csv')
 
 def objective(a, b):
     """
@@ -142,11 +142,11 @@ ax.set_xlabel("$T_B (K)$")
 ax.set_ylabel("$H_v (kJ/mol)$")
 ax.set_title("Trouton's Rule Optimization")
 ax.legend()
-fig.savefig('homework-3-2/trouton.png', dpi=200, bbox_inches='tight')
+fig.savefig('trouton.png', dpi=200, bbox_inches='tight')
 print("Saved plot to homework-3-2/trouton.png")
 
 # discussion
-with open("homework-3-2/discussion.md", 'w') as file:
+with open("discussion.md", 'w') as file:
 	file.write("""Both the slope and intercept from the optimization have the same value as their linear regression counterparts (at least to 2 decimal places).<br>
 The optimization-based approach works well in this case, and would be preferred if we have a more complex model that does not have an analytical solution for the best fit. However, if the objective function has more than one local minima, optimization might produce a result that is not globally optimized and we would have difficulty detecting that. What's more, we cannot obtain confidence intervals from optimization alone.<br>
 On the other hand, linear regression guarantees a best fit solution and also gives the confidence intervals for the best fit parameters. However, not every regression has an analytical best solution, so this approach is model-specific and cannot be generalized.

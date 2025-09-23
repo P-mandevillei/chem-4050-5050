@@ -76,7 +76,7 @@ def confidence_interval_intercept(x, residuals, confidence_level):
 
 # linear regression
 print("Performing linear regression")
-df = pd.read_csv('trouton.csv')
+df = pd.read_csv('../trouton.csv')
 slope, intercept = ols(df['T_B (K)'], df['H_v (kcal/mol)'])
 slope_JmolK = slope * 1000 * constants.calorie
 intercept_kJmol = intercept * constants.calorie
@@ -118,11 +118,11 @@ ax.set_xlabel("$T_B (K)$")
 ax.set_ylabel("$H_v (kJ/mol)$")
 ax.set_title("Trouton's Rule")
 ax.legend()
-fig.savefig('homework-3-1/trouton.png', dpi=200, bbox_inches='tight')
+fig.savefig('trouton.png', dpi=200, bbox_inches='tight')
 print("Saved plot to homework-3-1/trouton.png")
 
 # discussion
-with open('homework-3-1/discussion.md', 'w') as file:
+with open('discussion.md', 'w') as file:
 	file.write(r"""The slope can be interpreted as $\Delta S_v$. Using linear regression, we obtained a best fit with a slope of 103.85 $\frac{J}{mol\cdot K}$ and we are 95% confident that the slope falls between 97.46 and 110.25 $\frac{J}{mol\cdot K}$. We can perform hypothesis testing with the null hypothesis being that the true slope is 88 $\frac{J}{mol\cdot K}$ and $\alpha=0.5$. Since the 95% confidence interval of the slope does not contain 88 $\frac{J}{mol\cdot K}$, we can reject the null hypothesis. Therefore, we conclude with 95% confidence that for our data, $\Delta S_v \neq 88 \frac{J}{mol\cdot K}$.<br>
 We see from the plot that the distribution of enthalpies over temperature is highly uneven, with most points clustered at low temperatures but a few points fluctuating a lot at high temperatures. Linear regression minimizes residual sum of squares, which would be affected more by those few datapoints at the high temperature end. This could explain why our result deviates from Trouton's rule.<br>
 We can perform a similar test with the intercept, with the null hypothesis being the true intercept is 0 and $\alpha=0.5$. This time its 95% confidence interval includes 0, therefore we cannot reject the null hypothesis. This is consistent with theoretical thermodynamics predictions. Under constant pressure, $\Delta G_v = \Delta H_v - T\Delta S_v = 0$ since vaporization is reversible. Therefore, $\Delta H_v = \Delta S_v \times T$. This predicts a 0 intercept.
