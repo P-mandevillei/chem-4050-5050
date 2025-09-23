@@ -1,4 +1,4 @@
-# Homework 2
+# Homework 3
 ------------------------
 [Problem Statements](./homework_3_statistics.pdf)
 
