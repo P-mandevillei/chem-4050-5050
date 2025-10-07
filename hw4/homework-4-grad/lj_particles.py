@@ -83,11 +83,14 @@ def lj_partition(temps, length, n=5):
     results = np.zeros(temps.shape[0])
     # 6-fold integral for each temp
     print("Integrating...")
+    betas = 1/(constants.k * np.array(temps))
     for i, integrand in tqdm(enumerate(integrands)):
         last_integral = integrand
         for _ in range(6):
             last_integral = trapezoid(last_integral, dim, axis=0)
-        coeff = (1/constants.h)**6 # todo
+        m = 39.948 / 1000 / constants.N_A # kg
+        wavelength = np.sqrt(betas[i] * constants.h**2 / (2*np.pi*m))
+        coeff = (1/constants.h)**6 * (1/wavelength)**6
         results[i] = coeff * last_integral
     return results
 

@@ -39,7 +39,7 @@ if __name__ == '__main__':
 	           linestyle='--', color='r', alpha=0.6)
 	ax.set_xlabel('Temperature (K)')
 	ax.set_ylabel('$C_v$ (J/K)')
-	ax.set_title("$C_v$ vs. temperature for a pair of Lennard-Jones particles")
+	ax.set_title("$C_v$ vs. temperature for a pair of Lennard-Jones Ar particles")
 	ax.legend()
 	fig.savefig("cv_vs_temperature.png", dpi=210)
 	print("Saved plot to cv_vs_temperature.png")
