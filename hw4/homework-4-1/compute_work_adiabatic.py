@@ -59,7 +59,7 @@ if __name__ == "__main__":
 	v_i = 0.1 # m^3
 	gamma = 1.4
 	vols = np.linspace(v_i, 3*v_i, 100)
-	works = pd.DataFrame({'final_volume': vols})
-	works['adiabatic'] = works['final_volume'].apply(lambda v_f: compute_work_adiabatic(v_i, v_f, gamma, n, temp_i))
+	works = pd.DataFrame({'final_volume_m^3': vols})
+	works['adiabatic_J'] = works['final_volume_m^3'].apply(lambda v_f: compute_work_adiabatic(v_i, v_f, gamma, n, temp_i))
 	works.to_csv('adiabatic_work.csv')
 	print("Saved computed works to adiabatic_work.csv")

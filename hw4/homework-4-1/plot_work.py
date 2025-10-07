@@ -14,7 +14,7 @@ vols = np.linspace(v_i, 3*v_i, 100)
 works = pd.DataFrame({'final_volume': vols})
 works['isothermal'] = works['final_volume'].apply(lambda v_f: compute_work_isothermal(v_i, v_f, n, temp_i))
 works['adiabatic'] = works['final_volume'].apply(lambda v_f: compute_work_adiabatic(v_i, v_f, gamma, n, temp_i))
-works.to_csv('work.csv')
+works.rename(columns={'final_volume': 'final_volume_m^3', 'isothermal': 'isothermal_J', 'adiabatic': 'adiabatic_J'}).to_csv('work.csv')
 print("Saved computed works for both isothermal and adiabatic processes to work.csv")
 
 plt_works = works.melt(

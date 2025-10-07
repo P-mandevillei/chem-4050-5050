@@ -1,4 +1,4 @@
-temperature,internal_energy,free_energy,entropy,system
+temperature_K,internal_energy_J,free_energy_J,entropy_J/K,system
 300.0,0.0,-1.093083558922793e-20,3.6436118630759805e-23,isolated
 317.17171717171715,-0.0,-1.1556506313190472e-20,3.6436118630759776e-23,isolated
 334.34343434343435,-0.0,-1.2182177037153014e-20,3.643611863075973e-23,isolated

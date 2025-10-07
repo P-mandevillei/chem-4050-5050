@@ -43,7 +43,7 @@ if __name__ == "__main__":
 	v_i = 0.1 # m^3
 	gamma = 1.4
 	vols = np.linspace(v_i, 3*v_i, 100)
-	works = pd.DataFrame({'final_volume': vols})
-	works['isothermal'] = works['final_volume'].apply(lambda v_f: compute_work_isothermal(v_i, v_f, n, temp_i))
+	works = pd.DataFrame({'final_volume_m^3': vols})
+	works['isothermal_J'] = works['final_volume_m^3'].apply(lambda v_f: compute_work_isothermal(v_i, v_f, n, temp_i))
 	works.to_csv('isothermal_work.csv')
 	print("Saved computed works to isothermal_work.csv")

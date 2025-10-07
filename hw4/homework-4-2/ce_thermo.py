@@ -166,7 +166,7 @@ combined_df = pd.concat([
     socCe.thermo_df.assign(system='soc'),
     cfsCe.thermo_df.assign(system='soc and cfs')
 ], axis=0)
-combined_df.to_csv('thermo_properties.csv', index=False)
+combined_df.rename(columns={'temperature': 'temperature_K', 'internal_energy': "internal_energy_J", "free_energy": "free_energy_J", "entropy": "entropy_J/K"}).to_csv('thermo_properties.csv', index=False)
 print("Saved combined thermodynamic properties to thermo_properties.csv")
 
 # plot internal energies
