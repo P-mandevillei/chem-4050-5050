@@ -37,6 +37,11 @@ def laplacian_psi_1s(x, y, z, Z=1, a0=1):
     """
     a = a0/Z
     r = np.sqrt(x**2 + y**2 + z**2)
+	# prevent divide by 0
+    if type(r) == 'numpy.float64' and r == 0:
+        r = 1e-12
+    else:
+        r[r == 0] = 1e-12
     wavefunctions = psi_1s(x, y, z, Z=Z, a0=a0)
     term_1 = (1/a0)**2 * wavefunctions
     term_2 = 2/r * (-1/a0)*wavefunctions
