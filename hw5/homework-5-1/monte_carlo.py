@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from scipy.stats import expon, gamma
+from scipy.stats import expon
 
 def psi_2p_z(x, y, z):
     """
@@ -65,49 +65,48 @@ def uniform_mc(n, sep=2, length=20):
         overlap = volume*np.mean(integrands)
         return overlap
 
-def expon_mc(n, sep=2, length=20):
-    """
-    Monte Carlo importance sampling
-
-    Parameters
-    ------------------------------
-    n: number of point estimators
-    sep (atomic unit): separation distance of two hydrogens
-    length (atomic unit): defines the cube (-L, L) over which to integrate
+def expon_mc(n, sep=2, length=20, scale=2): 
+    """ 
+    Monte Carlo importance sampling 
     
-    Returns
-    Monte Carlo estimation of the overlap of hydrogen 2pz orbitals using importance sampling
-    """
-    rng = np.random.default_rng(114514)
-    print(f"Monte Carlo with {n} estimators")
-    memory_lim = int(1e5)
-    if n <= memory_lim:
-        x, y = expon.rvs(size=(2, n), scale=4, random_state=rng) # exponential distribution has a support of [0, +infty)
-        z = gamma.rvs(size=n, a=3, loc=0, scale=2, random_state=rng) # also support of [0,infty)
-        # only need to integrate over the first quadrant due to symmetry
-        integrands = psi_2p_z(x, y, z+sep/2)*psi_2p_z(x, y, z-sep/2)
-        g = expon.pdf(x, scale=4) * expon.pdf(y, scale=4) * gamma.pdf(z, a=3, loc=0, scale=2) # independent variables
-        integrands /= g
-        overlap = 8*np.mean(integrands) # eight quadrants
-        return overlap
-    else:
-        # prevent memory overflow!
-        # MC in chunks
-        chunks = n // memory_lim
-        remainder = n % memory_lim
-        integrands = []
-        for chunk in tqdm(range(chunks)):
-            x, y = expon.rvs(size=(2, memory_lim), scale=4, random_state=rng)
-            z = gamma.rvs(size=memory_lim, a=3, loc=0, scale=2, random_state=rng)
+    Parameters 
+    ------------------------------ 
+    n: number of point estimators 
+    sep (atomic unit): separation distance of two hydrogens 
+    length (atomic unit): defines the cube (-L, L) over which to integrate
+	scale: the scale for the exponential distribution
+    
+    Returns 
+    Monte Carlo estimation of the overlap of hydrogen 2pz orbitals using importance sampling 
+    """ 
+    rng = np.random.default_rng(114514) 
+    print(f"Monte Carlo with {n} estimators") 
+    memory_lim = int(1e5) 
+    
+    if n <= memory_lim: 
+        x, y, z = expon.rvs(size=(3, n), scale=scale, random_state=rng) # exponential distribution has a support of [0, +infty) 
+        # only need to integrate over the first quadrant due to symmetry 
+        integrands = psi_2p_z(x, y, z+sep/2)*psi_2p_z(x, y, z-sep/2) 
+        g = expon.pdf(x, scale=scale) * expon.pdf(y, scale=scale) * expon.pdf(z, scale=scale) # independent variables 
+        integrands /= g 
+        overlap = 8*np.mean(integrands) # eight quadrants 
+        return overlap 
+    else: 
+        # prevent memory overflow! 
+        # MC in chunks 
+        chunks = n // memory_lim 
+        remainder = n % memory_lim 
+        integrands = [] 
+        for chunk in tqdm(range(chunks)): 
+            x, y, z = expon.rvs(size=(3, memory_lim), scale=scale, random_state=rng) 
+            wavefunctions = psi_2p_z(x, y, z+sep/2)*psi_2p_z(x, y, z-sep/2) 
+            g = expon.pdf(x, scale=scale) * expon.pdf(y, scale=scale) * expon.pdf(z, scale=scale) 
+            integrands.append(wavefunctions/g) 
+        if remainder>0: 
+            x, y, z = expon.rvs(size=(3, remainder), scale=scale, random_state=rng)
             wavefunctions = psi_2p_z(x, y, z+sep/2)*psi_2p_z(x, y, z-sep/2)
-            g = expon.pdf(x, scale=4) * expon.pdf(y, scale=4) * gamma.pdf(z, a=3, loc=0, scale=2) 
-            integrands.append(wavefunctions/g)
-        if remainder>0:
-            x, y = expon.rvs(size=(2, remainder), scale=4, random_state=rng)
-            z = gamma.rvs(size=remainder, a=3, loc=0, scale=2, random_state=rng)
-            wavefunctions = psi_2p_z(x, y, z+sep/2)*psi_2p_z(x, y, z-sep/2)
-            g = expon.pdf(x, scale=4) * expon.pdf(y, scale=4) * gamma.pdf(z, a=3, loc=0, scale=2) 
+            g = expon.pdf(x, scale=scale) * expon.pdf(y, scale=scale) * expon.pdf(z, scale=scale)
             integrands.append(wavefunctions/g)
         integrands = np.concat(integrands)
-        overlap = 8*np.mean(integrands)
+        overlap = 8*np.mean(integrands) 
         return overlap
