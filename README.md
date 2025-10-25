@@ -8,3 +8,4 @@ A collection of my coursework for CHEM 4050: Computational Problem Solving in th
 - [Homework 3](./hw3/README.md): Linear regression of $\Delta H_{vap} \text{ - } T$ relationship to examine Trouton's rule
 - [Homework 4](./hw4/README.md): Computing thermodynamic properties from statistical mechanics
 - [Homework 5](./hw5/README.md): Applying Monte Carlo integration and importance sampling to quantum chemistry
+- [Project 1](./project_1/README.md): Applying Grand Canonical Monte Carlo to reaction condition optimization of Habor-Bosch process
