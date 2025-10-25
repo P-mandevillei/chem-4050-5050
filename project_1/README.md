@@ -2,7 +2,7 @@
 
 - [source notebook](./project_1.ipynb)
 - [toy example animation](./toy_example.mp4)
-- [$H_2$-$N_2$ competitive binding animation](./ru_h2_n2_binding.mp4)
+- [H2-N2 competitive binding animation](./ru_h2_n2_binding.mp4)
 
 [back](../README.md)
 
