@@ -142,6 +142,11 @@ All the conditions produce similar coverage in this model. To further optimize a
 1. Raising the pressure (and therefore chemical potential) of $N_2$, which has a smaller adsorption energy compared to $H_2$ and stronger repulsion. This would help more $N_2$ bind to the surface.
 2. Removing ammonia, therefore lowering its chemical potential. This would further lower the coverage of $NH_3$ on the surface, preventing it from blocking reaction sites.
 
+Caveats of the current model:
+
+1. $N_2$ and $H_2$ interact through induced-dipoles, which can be reasonably modeled by the Lennard-Jones potential. However, ammonia has a strong dipole moment and can hydrogen bond, which makes the Lennard-Jones model inaccurate. To model the binding of ammonia more accurately, a force field should be selected that takes into account these additional interactions.
+2. It is possible that different molecules have different preferences for binding sites. For example, hydrogen might preferentially bind at the fourfold sites. A more accurate model could allow three kinds of binding sites to have different adsorption energies and different interaction distances.
+
 
 ## 5: Animation
 Animation with $\mu_{H2}=0$ and $T=116K$, saving every 100 frames for a total simulation time of 10000 frames:
