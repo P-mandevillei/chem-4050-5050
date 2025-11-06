@@ -1,8 +1,6 @@
 <h1 style="text-align: center;"> Project 1 Report </h1>
 
 - [source notebook](./project_1.ipynb)
-- [toy example animation](./toy_example.mp4)
-- [H2-N2 competitive binding animation](./ru_h2_n2_binding.mp4)
 
 [back](../README.md)
 
@@ -10,13 +8,13 @@
 
 
 # Example system
-![example phase diagram](example_phase_diagram.png)
+![example phase diagram](output_figures/example_phase_diagram.png)
 
 # Exploring adsorption of $N_2$ and $H_2$
 - Phase diagrams:
-![Habor phase diagrams](haber_exploration_phase_diagrams.png)
+![Habor phase diagrams](output_figures/haber_exploration_phase_diagrams.png)
 - Example lattice configurations:
-![Habor example lattices](haber_exploration_lattices.png)
+![Habor example lattices](output_figures/haber_exploration_lattices.png)
 
 ## Discussion of adsorption behaviors
 
@@ -66,11 +64,11 @@ since chemical potentials don't change.
 
 - Phase diagrams using the same conditions for $H_2$ and $N_2$:
 
-![Habor exploration phase diagrams enhanced](./haber_exploration_enhanced_phase_diagrams.png)
+![Habor exploration phase diagrams enhanced](output_figures/haber_exploration_enhanced_phase_diagrams.png)
 
 - Example lattice configurations:
 
-![Habor exploration lattices enhanced](./haber_exploration_lattices_enhanced.png)
+![Habor exploration lattices enhanced](output_figures/haber_exploration_lattices_enhanced.png)
 
 We see the same trends in the resulting phase diagrams!
 
@@ -78,15 +76,15 @@ We see the same trends in the resulting phase diagrams!
 A 4% Ru-Ba-K/C catalyst is an emerging catalyst for the Haber-Bosch process. Here we consider the adsorption of $H_2$ and $N_2$ on ruthenium 001 surfaces.
 Ru (001) surface is hexagonal.<br>
 [Jacobi](https://doi.org/10.1002/(SICI)1521-396X(200001)177:1%3C37::AID-PSSA37%3E3.0.CO;2-Y) found the binding energy of nitrogen gas to be -0.5 eV, with the nitrogen binding on the top site of Ru atom.
-![N2-Ru-binding.png](./N2-Ru-binding.png)
+![N2-Ru-binding.png](report_figures/N2-Ru-binding.png)
 [Ungerer and Leeuw](https://pubs.rsc.org/en/content/articlelanding/2025/cp/d4cp04165h) found the total adsorption energy of molecular $H_2$, including its dissociation into elemental H*, to be around -1.34 eV.
-![H2-Ru-binding.png](./H2-Ru-binding.png)
-![H-Ru-Binding.png](./H-Ru-Binding.png)
+![H2-Ru-binding.png](report_figures/H2-Ru-binding.png)
+![H-Ru-Binding.png](report_figures/H-Ru-Binding.png)
 **For simplicity's sake, we assume both $H_2$ and $N_2$ bind to the top sites, with $\epsilon_{H_2}=-1.34eV$ and $\epsilon_{N_2}=-0.5eV$.**
 We model the interaction between $H_2$ and $N_2$ using Lennard-Jones potential.
 $$ V(r) = 4\epsilon\left[ (\frac{\sigma}{r})^{12} - (\frac{\sigma}{r})^{6} \right] $$
 With data from [Wang et al](https://pubs-acs-org.libproxy.washu.edu/doi/pdf/10.1021/acs.jctc.0c01132):
-![H2_N2_LJ.png](./H2_N2_LJ.png)
+![H2_N2_LJ.png](report_figures/H2_N2_LJ.png)
 Lorentz-Berthelot mixing rules: $\sigma_{12} = \frac{\sigma_1+\sigma_2}{2}$ and $\epsilon_{12} = \sqrt{\epsilon_{1}\epsilon_{2}} $.<br>
 We will use the following measures calculated using the first set of parameters (12-6 LJ):
 | interaction | $\epsilon (eV)$ | $\sigma (Å)$ |
@@ -95,16 +93,16 @@ We will use the following measures calculated using the first set of parameters 
 | $N_2$-$N_2$ | $3.5\times 10^{-3}$ |  3.614       |
 | $H_2$-$N_2$ | $1.5\times 10^{-3}$ |  3.266       |
 
-![LJ comparisons](./lj_comparisons.png)
+![LJ comparisons](output_figures/lj_comparisons.png)
 
 Ru bond length is calculated to be $2.645$ Å from the [mp-33 structure](https://next-gen.materialsproject.org/materials/mp-33?formula=Ru#crystal_structure).<br>
 We will use a 4x4 lattice to model the adsorption process. As can be seen from the LJ curves above, the interactions are basically 0 when the particles are $2\times 2.645 = 5.29\AA$ away. This means using the minimum image convention is appropriate.<br>
 
 We define the unit cell as a bounding parallelogram with $\alpha=60^{\cdot}$
-![trigonal_lattice.jpg](./trigonal_lattice.jpg)
+![trigonal_lattice.jpg](report_figures/trigonal_lattice.jpg)
 <br>
 Simulation result:
-![Ru H2-N2 binding](./ru_h2_n2_binding.png)
+![Ru H2-N2 binding](output_figures/ru_h2_n2_binding.png)
 
 From the LJ curves, we observe that the attractions are much weaker than repulsions. $H_2$ weakly repells with itself, while all the other pairs repell strongly when 1-bond ($2.645 \AA$) apart. Combined with the large adsorption energy of $-1.34 eV$ for $H_2$, it makes sense that $H_2$ always dominates on the surface, which is not affected by change in $\mu_{H_2}$. The attractive network of $H_2$ is strong, and the incorporation of $N_2$ could be unfavorable due to repulsion. Increasing temperature favors the adsorption of $H_2$, which could be understood as thermal energy exceeds the adsorption energy of $N_2$ but not that of $H_2$, which leads to favorable adsorption of $H_2$.<br>
 $T<150K$ seems to be the optimal condition in this model, which results in $\mu_{H_2}$ around 0.8 and $\mu_{N_2}$ around 0.2. 
@@ -115,7 +113,7 @@ Since we are using minimum image convention, I expect the lattice size to have n
 Lattice size would have no impact on the ideal mixture at all, since no interaction is modeled. To observe effect of lattice size, we use the repulsive interaction scheme as an example. We run simulations on square lattices with repulsive interactions with different n.<br>
 
 Here is a comparison between the phase diagrams using different lattice sizes:
-![effect of lattice size](./effect_of_size_phase_diagrams.png)
+![effect of lattice size](output_figures/effect_of_size_phase_diagrams.png)
 As expected, when n<2, the resulting phase diagram deviates from the others. When n>2, the resulting phase diagrams are consistent with each other. When n=2, the results also look good, but it is an edge case that should not be trusted.
 
 ## 4: Competition between 3 species
@@ -132,10 +130,10 @@ For Lennard-Jones, we use $\sigma_{NH_3}=2.900$ and $\epsilon=4.8\times 10^{-2}e
 |$N_2$-$NH_3$ | $1.3\times 10^{-2}$ |  3.257       |
 
 Set $\mu_{NH_3}$ to -0.1 eV.<br>
-![LJ comparisons](./lj_comparisons.png)
+![LJ comparisons](output_figures/lj_comparisons.png)
 
 Resulting phase diagram:
-![Ru H2-N2-NH3 binding](./ru_h2_n2_nh3_binding.png)
+![Ru H2-N2-NH3 binding](output_figures/ru_h2_n2_nh3_binding.png)
 The same interpretations can be made for this model as the 2-species competitive model using LJ potential (optional #2). Although $NH_3$ has a large $\epsilon$ and therefore a stronger maximal attraction, our lattice is a discrete system with the two nearest distances being 1-bond (2.645$\AA$) and $\sqrt(3)$-bond (4.581$\AA$) long, where the repulsion of $NH_3$-$NH_3$ is very strong (2.645$\AA$) but the attraction quite weak (4.581$\AA$). Since the adsorption energy of $NH_3$ is also quite small, it is expected to behave similar to $N_2$. $H_2$ is still expected to dominate due to its weak repulsion and large adsorption energy.<br>
 All the conditions produce similar coverage in this model. To further optimize ammonia synthesis, the following could be considered:
 
@@ -150,7 +148,7 @@ Caveats of the current model:
 
 ## 5: Animation
 Animation with $\mu_{H2}=0$ and $T=116K$, saving every 100 frames for a total simulation time of 10000 frames:
-![animation of competitive sorption](./ru_h2_n2_nh3_binding.gif)
+![animation of competitive sorption](animations/ru_h2_n2_nh3_binding.gif)
 
 <br>
 
