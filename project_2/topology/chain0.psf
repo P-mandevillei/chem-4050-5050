@@ -1,0 +1,46 @@
+PSF
+
+       1 !NTITLE
+ REMARKS coarse-grained polymer chain
+
+      30 !NATOM
+       1 POLY   1 POL  CG    CG    0.000  1.000
+       2 POLY   1 POL  CG    CG    0.000  1.000
+       3 POLY   1 POL  CG    CG    0.000  1.000
+       4 POLY   1 POL  CG    CG    0.000  1.000
+       5 POLY   1 POL  CG    CG    0.000  1.000
+       6 POLY   1 POL  CG    CG    0.000  1.000
+       7 POLY   1 POL  CG    CG    0.000  1.000
+       8 POLY   1 POL  CG    CG    0.000  1.000
+       9 POLY   1 POL  CG    CG    0.000  1.000
+      10 POLY   1 POL  CG    CG    0.000  1.000
+      11 POLY   1 POL  CG    CG    0.000  1.000
+      12 POLY   1 POL  CG    CG    0.000  1.000
+      13 POLY   1 POL  CG    CG    0.000  1.000
+      14 POLY   1 POL  CG    CG    0.000  1.000
+      15 POLY   1 POL  CG    CG    0.000  1.000
+      16 POLY   1 POL  CG    CG    0.000  1.000
+      17 POLY   1 POL  CG    CG    0.000  1.000
+      18 POLY   1 POL  CG    CG    0.000  1.000
+      19 POLY   1 POL  CG    CG    0.000  1.000
+      20 POLY   1 POL  CG    CG    0.000  1.000
+      21 POLY   1 POL  CG    CG    0.000  1.000
+      22 POLY   1 POL  CG    CG    0.000  1.000
+      23 POLY   1 POL  CG    CG    0.000  1.000
+      24 POLY   1 POL  CG    CG    0.000  1.000
+      25 POLY   1 POL  CG    CG    0.000  1.000
+      26 POLY   1 POL  CG    CG    0.000  1.000
+      27 POLY   1 POL  CG    CG    0.000  1.000
+      28 POLY   1 POL  CG    CG    0.000  1.000
+      29 POLY   1 POL  CG    CG    0.000  1.000
+      30 POLY   1 POL  CG    CG    0.000  1.000
+
+      29 !NBOND: bonds
+       1       2       2       3       3       4       4       5
+       5       6       6       7       7       8       8       9
+       9      10      10      11      11      12      12      13
+      13      14      14      15      15      16      16      17
+      17      18      18      19      19      20      20      21
+      21      22      22      23      23      24      24      25
+      25      26      26      27      27      28      28      29
+      29      30
