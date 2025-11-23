@@ -1,0 +1,21 @@
+PSF
+
+       1 !NTITLE
+ REMARKS coarse-grained polymer chain
+
+      10 !NATOM
+       1 POLY   1 POL  CG    CG    0.000  1.000
+       2 POLY   1 POL  CG    CG    0.000  1.000
+       3 POLY   1 POL  CG    CG    0.000  1.000
+       4 POLY   1 POL  CG    CG    0.000  1.000
+       5 POLY   1 POL  CG    CG    0.000  1.000
+       6 POLY   1 POL  CG    CG    0.000  1.000
+       7 POLY   1 POL  CG    CG    0.000  1.000
+       8 POLY   1 POL  CG    CG    0.000  1.000
+       9 POLY   1 POL  CG    CG    0.000  1.000
+      10 POLY   1 POL  CG    CG    0.000  1.000
+
+       9 !NBOND: bonds
+       1       2       2       3       3       4       4       5
+       5       6       6       7       7       8       8       9
+       9      10
